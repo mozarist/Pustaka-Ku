@@ -156,6 +156,6 @@
             </div>
         </div>
 
-        <p class="text-xs text-gray-500">&copy; 2025 BelanjaKu All rights reserved. | Made by <a href="https://github.com/mozarist" class="hover:underline decoration-rose-600 bg-gradient-to-tr from-indigo-600 via-rose-600 to-orange-600 bg-clip-text inline-block text-transparent">Mozarist</a></p>
+        <p class="text-xs text-gray-500">&copy; 2025 Pustaka-Ku All rights reserved. | Made by <a href="https://github.com/mozarist" class="hover:underline decoration-emerald-600 bg-gradient-to-tr from-zinc-950 via-green-600 to-emerald-600 bg-clip-text inline-block font-medium text-transparent">Mozarist</a></p>
     </div>
 </footer>

@@ -18,33 +18,6 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <!-- Role Picker -->
-        <div class="mt-4">
-            <x-input-label for="role" value="Daftar Sebagai" />
-
-            <div class="flex gap-4 mt-1">
-                <!-- Pengguna -->
-                <label
-                    class="flex-1 flex gap-4 items-center peer hover:bg-gradient-to-tr from-indigo-100 to-white border border-indigo-600 rounded-lg p-4 cursor-pointer hover:border-indigo-600 transition peer-has-checked:border-rose-600">
-                    <input type="radio" name="role" value="pengguna">
-                    <div>
-                        <div class="font-semibold text-gray-800 peer-checked:text-rose-600">Pengguna</div>
-                        <div class="text-sm text-gray-500">Belanja dan lakukan pemesanan produk.</div>
-                    </div>
-                </label>
-
-                <!-- Penjual -->
-                <label
-                    class="flex-1 flex gap-4 items-center peer hover:bg-gradient-to-tr from-indigo-100 to-white border border-indigo-600 rounded-lg p-4 cursor-pointer hover:border-indigo-600 transition peer-has-checked:border-rose-600">
-                    <input type="radio" name="role" value="penjual">
-                    <div>
-                        <div class="font-semibold text-gray-800 peer-checked:text-rose-600">Penjual</div>
-                        <div class="text-sm text-gray-500">Kelola produk dan proses pesanan pelanggan.</div>
-                    </div>
-                </label>
-            </div>
-        </div>
-
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />

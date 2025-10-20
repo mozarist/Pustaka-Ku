@@ -1,3 +1,3 @@
-<h1 class="bg-gradient-to-tr from-indigo-600 via-rose-600 to-orange-600 bg-clip-text inline-block w-fit text-transparent font-semibold {{ $class }}">
-    BelanjaKu
+<h1 class="bg-gradient-to-tr from-green-600 to-emerald-600 bg-clip-text inline-block w-fit text-transparent font-semibold {{ $class }}">
+    Pustaka-Ku
 </h1>

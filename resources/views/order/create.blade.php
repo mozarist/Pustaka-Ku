@@ -6,14 +6,15 @@
             <img src="{{ asset('storage/' . $product->gambar) }}" alt=""
                 class="w-full h-full aspect-square object-cover border border-zinc-500 rounded-xl">
 
-            <div class="space-y-0 border-b border-zinc-300 pb-5">
+            <div class="space-y-5 border-b border-zinc-300 pb-5">
                 <h6 class="text-2xl font-semibold">{{ $product->nama }}</h6>
-                <p class="text-sm text-rose-600 font-semibold">{{ $product->seller->name }}</p>
-            </div>
 
-            <p class="text-rose-600 text-lg font-semibold">
-                Rp<span id="display-price">{{ number_format($product->harga, 0, ',', '.') }}</span>,00
-            </p>
+                <div class="space-y-2">
+                    <p class="text-sm font-semibold leading-none">Tersedia: <span class="text-emerald-600">{{ $product->jumlah }}</span></p>
+                    
+                    <p class="text-sm font-semibold leading-none">Kategori: <span class="text-emerald-600">{{ $product->kategori }}</span></p>
+                </div>
+            </div>
 
             <div class="space-y-2">
                 <p class="text-lg font-semibold leading-none">Deskripsi Produk:</p>

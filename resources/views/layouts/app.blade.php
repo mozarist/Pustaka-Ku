@@ -15,15 +15,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-[inter] antialiased">
-    <div class="flex flex-col items-center justify-between min-h-screen bg-zinc-100 text-zinc-950">
+<body class="font-[Geist] antialiased">
+    <div class="flex flex-col items-center justify-between min-h-screen bg-zinc-50 text-zinc-950">
         @include('layouts.navigation')
 
         @if (request()->is('/'))
@@ -33,7 +33,8 @@
         @endif
 
         <!-- Page Content -->
-        <main class="max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-24 @if (request()->is('/')) md:pt-4 space-y-10 @else sm:py-24 sm:space-y-10 @endif">
+        <main
+            class="max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-24 @if (request()->is('/')) pt-5 md:pt-12 space-y-32 @else sm:py-24 sm:space-y-10 @endif">
             {{ $slot }}
         </main>
 

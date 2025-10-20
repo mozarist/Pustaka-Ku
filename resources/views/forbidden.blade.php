@@ -14,7 +14,7 @@
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     </head>
     <body class="bg-[#FDFDFC] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <h5 class="bg-gradient-to-tr from-indigo-600 via-rose-600 to-orange-600 inline-block bg-clip-text text-transparent text-8xl font-semibold">
+        <h5 class="bg-gradient-to-tr from-green-600 to-emerald-600 inline-block bg-clip-text text-transparent text-8xl font-semibold">
             Maaf!
         </h5>
         <p class="text-2xl mt-2">
@@ -25,8 +25,8 @@
             403 Forbidden
         </p>
 
-        <a href="/" class="mt-5 px-8 py-1 bg-gradient-to-tr from-indigo-600 via-rose-600 to-orange-600 text-white font-semibold rounded-md hover:brightness-110 hover:scale-105 transition">
+        <button onclick="history.back()" class="mt-5 px-8 py-1 bg-gradient-to-tr from-zinc-950 to-emerald-600 text-white font-semibold rounded-md hover:brightness-110 hover:scale-105 transition">
             Kembali
-        </a>
+        </button>
     </body>
 </html>

@@ -4,13 +4,13 @@
         <div class="flex items-center gap-2 justify-between">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center text-2xl text-rose-600 font-semibold">
+                <div class="shrink-0 flex items-center text-2xl text-emerald-600 font-semibold">
                     <h1>
                         <a href="/">
                             <x-application-logo class="text-2xl" />
                         </a>
-                        @if (Route::is('seller.index', 'products.create', 'products.edit'))
-                            Seller Dashboard
+                        @if (Route::is('admin.index', 'products.create', 'products.edit'))
+                            Admin Dashboard
                         @endif
 
                     </h1>
@@ -19,21 +19,21 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-2 lg:space-x-4 sm:-my-px sm:ms-10 sm:flex">
 
-                    @if (Route::is('seller.index', 'products.create', 'products.edit'))
-                        @if (Auth::check() && Auth::user()->role === 'penjual')
+                    @if (Route::is('admin.index', 'products.create', 'products.edit'))
+                        @if (Auth::check() && Auth::user()->role === 'admin')
                             <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                                {{ __('Back to Home') }}
+                                {{ __('Back to home') }}
                             </x-nav-link>
 
-                            <x-nav-link :href="route('seller.index')" :active="request()->routeIs('seller.index')">
-                                {{ __('Seller Overview') }}
+                            <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
+                                {{ __('Admin dashboard') }}
                             </x-nav-link>
 
-                            <x-nav-link href="/seller#products">
+                            <x-nav-link href="/admin#products">
                                 {{ __('Produk anda') }}
                             </x-nav-link>
 
-                            <x-nav-link href="/seller#orders">
+                            <x-nav-link href="/admin#orders">
                                 {{ __('Pesanan') }}
                             </x-nav-link>
                         @endif
@@ -42,35 +42,27 @@
                             {{ __('Home') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('order.index')" :active="request()->routeIs('order.index')">
-                            {{ __('Belanjaan-mu') }}
+                        <x-nav-link :href="route('products.index')" :active="request()->routeIs('order.index')">
+                            {{ __('Daftar buku') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('order.index')" :active="request()->routeIs('admin.index')">
+                            {{ __('Pinjaman-mu') }}
                         </x-nav-link>
                     @endif
-
-
 
                 </div>
             </div>
 
-            @if (!Route::is('seller.index', 'products.create', 'products.edit'))
+            @if (!Route::is('admin.index', 'products.create', 'products.edit'))
                 <div class="w-64 lg:w-96">
-                    <x-search-bar>Cari belanjaan</x-search-bar>
+                    <x-search-bar>Cari buku</x-search-bar>
                 </div>
             @endif
 
-            <div class="flex gap-2 md:gap-5 items-center">
+            <div class="flex gap-2 md:gap-2 items-center">
 
-                @if (Route::is('seller.index', 'products.create', 'products.edit'))
+                @if (Route::is('admin.index', 'products.create', 'products.edit'))
                 @else
-                    <a href="{{ route('cart.index') }}"
-                        class="flex items-center gap-1 text-rose-600 hover:text-rose-700 transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="size-5"
-                            viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-                            <path
-                                d="M24 48C10.7 48 0 58.7 0 72C0 85.3 10.7 96 24 96L69.3 96C73.2 96 76.5 98.8 77.2 102.6L129.3 388.9C135.5 423.1 165.3 448 200.1 448L456 448C469.3 448 480 437.3 480 424C480 410.7 469.3 400 456 400L200.1 400C188.5 400 178.6 391.7 176.5 380.3L171.4 352L475 352C505.8 352 532.2 330.1 537.9 299.8L568.9 133.9C572.6 114.2 557.5 96 537.4 96L124.7 96L124.3 94C119.5 67.4 96.3 48 69.2 48L24 48zM208 576C234.5 576 256 554.5 256 528C256 501.5 234.5 480 208 480C181.5 480 160 501.5 160 528C160 554.5 181.5 576 208 576zM432 576C458.5 576 480 554.5 480 528C480 501.5 458.5 480 432 480C405.5 480 384 501.5 384 528C384 554.5 405.5 576 432 576z" />
-                        </svg>
-                        <p class="text-sm">Keranjang</p>
-                    </a>
                 @endif
 
                 @if (Route::has('login'))
@@ -81,7 +73,7 @@
                                 <x-dropdown align="right" width="48">
                                     <x-slot name="trigger">
                                         <button
-                                            class="inline-flex items-center px-3 py-2 border border-zinc-300 text-sm leading-4 font-medium rounded-md text-rose-600 bg-white/65 backdrop-blur-md hover:text-rose-800 focus:outline-none transition ease-in-out duration-150">
+                                            class="inline-flex items-center px-3 py-2 border border-zinc-300 text-sm leading-4 font-medium rounded-md text-emerald-600 bg-white/65 backdrop-blur-md hover:text-emerald-800 focus:outline-none transition ease-in-out duration-150">
                                             <div>{{ Auth::user()->name }}</div>
 
                                             <div class="ms-1">
@@ -100,9 +92,9 @@
                                             {{ __('Profile') }}
                                         </x-dropdown-link>
 
-                                        @if (Auth::user()->role === 'penjual')
-                                            <x-dropdown-link :href="route('seller.index')">
-                                                {{ __('Seller Overview') }}
+                                        @if (Auth::user()->role === 'admin')
+                                            <x-dropdown-link :href="route('admin.index')">
+                                                {{ __('Admin dashboard') }}
                                             </x-dropdown-link>
                                         @endif
 

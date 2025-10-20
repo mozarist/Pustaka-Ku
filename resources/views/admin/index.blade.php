@@ -5,7 +5,7 @@
         <div class="bg-white overflow-hidden border border-dashed border-zinc-500 rounded-md">
             <p class="p-5 font-semibold">
                 Selamat datang kembali, <span
-                    class="bg-gradient-to-tr from-indigo-600 via-rose-600 to-orange-600 bg-clip-text text-transparent inline-block">{{ Auth::user()->name }}!</span>
+                    class="bg-gradient-to-tr from-green-600 to-emerald-600 bg-clip-text text-transparent inline-block">{{ Auth::user()->name }}!</span>
             </p>
         </div>
 
@@ -31,11 +31,11 @@
     <div class="space-y-5 scroll-mt-24" id="products">
         <div class="space-y-2">
             <h3 class="text-6xl font-semibold">
-                Daftar Produk
+                Daftar Buku
             </h3>
 
-            <h4 class="text-xl">
-                Daftar Produk di Toko {{ Auth::user()->name }}
+            <h4 class="text-xl text-zinc-700">
+                Daftar buku di perpustakaan
             </h4>
         </div>
 
@@ -43,22 +43,22 @@
             class="flex gap-5 justify-between items-center bg-white overflow-hidden border border-zinc-500 sm:rounded-md p-5">
             <div class="text-zinc-950">
                 <h4 class="text-xl font-semibold">
-                    Kelola Produk
+                    Kelola buku
                 </h4>
-                <p>Kelola produk yang akan anda jual di katalog toko anda.</p>
+                <p>Kelola buku yang akan ditampilkan di perpustakaan.</p>
             </div>
 
-            <a href="seller/products/create">
+            <a href="{{ route('products.create') }}">
                 <x-primary-button>
-                    + Tambah Produk
+                    + Tambah Buku
                 </x-primary-button>
             </a>
         </div>
 
         @if ($product->isEmpty())
             <p
-                class="bg-transparent text-rose-600 text-center font-semibold p-5 py-24 w-full border-2 border-rose-600 border-dashed rounded-md">
-                Anda belum memiliki produk di katalog anda</p>
+                class="bg-transparent text-zinc-700 text-center font-semibold p-5 py-24 w-full border-2 border-zinc-500 border-dashed rounded-md">
+                Belum ada buku yang ditambahkan ke perpustakaan.</p>
         @else
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols:3 xl:grid-cols-3 2xl-grid-cols-4 gap-5">
 
@@ -84,21 +84,17 @@
 
                                         <div class="flex items-center gap-5">
                                             <p class="text-base font-semibold leading-none">
-                                                Stok: {{ $p->stok }}
+                                                Jumlah: <span class="text-zinc-700">{{ $p->jumlah }}</span>
                                             </p>
 
                                             <p class="text-base font-semibold leading-none">
-                                                Status:
+                                                Kategori:
                                                 <span
-                                                    class="@if ($p->status === 'aktif') text-green-600 @else sm:text-red-600 @endif">
-                                                    {{ $p->status }}
+                                                    class="text-zinc-700">
+                                                    {{ $p->kategori }}
                                                 </span>
                                             </p>
                                         </div>
-
-                                        <h6 class="text-lg text-rose-600 font-semibold leading-tight">
-                                            Rp {{ number_format($p->harga, 0, ',', '.') }},00
-                                        </h6>
 
                                     </div>
 
@@ -123,18 +119,18 @@
     <div class="space-y-5 scroll-mt-24" id="orders">
         <div class="space-y-2">
             <h3 class="text-6xl font-semibold">
-                Daftar Pesanan
+                Daftar Pinjaman
             </h3>
 
-            <h4 class="text-xl">
-                Kelola Pemesanan Produk Anda
+            <h4 class="text-xl text-zinc-700">
+                Kelola peminjaman buku dari perpustakaan
             </h4>
         </div>
 
         @if ($order->isEmpty())
             <p
-                class="bg-transparent text-rose-600 text-center font-semibold p-5 py-20 w-full border-2 border-rose-600 border-dashed rounded-md">
-                Belum ada yang memesan produk anda.
+                class="bg-transparent text-zinc-700 text-center font-semibold p-5 py-20 w-full border-2 border-zinc-500 border-dashed rounded-md">
+                Belum ada yang meminjam buku.
             </p>
         @else
             <div class="flex flex-col divide-y divide-zinc-500 bg-white rounded-2xl border border-zinc-500">

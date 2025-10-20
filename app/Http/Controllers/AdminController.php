@@ -7,17 +7,17 @@ use App\Models\Products;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
-class SellerController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $product = Products::where('user_id', Auth::id())->get();
+        $product = Products::all();
         $order = Order::with('products')->whereHas('products', function ($query) {
             $query->where('user_id', Auth::id());
         })->latest()->get();
-        return view('seller.index', compact('product', 'order'));
+        return view('admin.index', compact('product', 'order'));
     }
 }

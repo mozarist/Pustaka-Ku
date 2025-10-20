@@ -11,7 +11,7 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        $product = Products::where('status', 'aktif')->latest()->get();
+        $product = Products::all();
         return view('welcome', compact('product'));
     }
 }

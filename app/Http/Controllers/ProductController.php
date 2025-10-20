@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-
+        $product = Products::all();
+        return view('products.index', compact('product'));
     }
 
     /**
@@ -22,7 +23,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('seller.products.create');
+        return view('admin.products.create');
     }
 
     /**
@@ -32,11 +33,10 @@ class ProductController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => 'required|string',
-            'harga' => 'required|integer',
-            'stok' => 'required|integer',
-            'status' => 'required|string',
-            'deskripsi' => 'nullable|string|max:5000',
+            'kategori' => 'required|string',
             'gambar' => 'nullable|image|mimes:jpg,jpeg,png,jfif,webp|max:5120',
+            'jumlah' => 'required|integer',
+            'deskripsi' => 'nullable|string|max:5000',
         ]);
 
         if ($request->hasFile('gambar')) {
@@ -48,7 +48,7 @@ class ProductController extends Controller
         $validatedData['user_id'] = Auth::id();
         Products::create($validatedData);
 
-        return redirect()->route('seller.index');
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -68,7 +68,7 @@ class ProductController extends Controller
         if ($product->user_id !== Auth::id()) {
             return view('forbidden');
         }
-        return view('seller.products.edit', compact('product'));
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -82,11 +82,10 @@ class ProductController extends Controller
 
         $validatedData = $request->validate([
             'nama' => 'required|string',
-            'harga' => 'required|integer',
-            'stok' => 'required|integer',
-            'status' => 'required|string',
-            'deskripsi' => 'nullable|string|max:5000',
+            'kategori' => 'required|string',
             'gambar' => 'nullable|image|mimes:jpg,jpeg,png,jfif,webp|max:5120',
+            'jumlah' => 'required|integer',
+            'deskripsi' => 'nullable|string|max:5000',
         ]);
 
         if ($request->hasFile('gambar')) {
@@ -103,7 +102,7 @@ class ProductController extends Controller
 
         $product->update($validatedData);
 
-        return redirect()->route('seller.index');
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -123,6 +122,6 @@ class ProductController extends Controller
         // Hapus produk
         $product->delete();
 
-        return redirect()->route('seller.index');
+        return redirect()->route('admin.index');
     }
 }

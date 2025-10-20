@@ -8,17 +8,11 @@ class Products extends Model
 {
     protected $fillable = [
         'nama',
-        'harga',
-        'stok',
-        'status',
-        'deskripsi',
+        'kategori',
         'gambar',
-        'user_id',
+        'jumlah',
+        'deskripsi',
     ];
-
-    public function seller() {
-        return $this->belongsTo(User::class, 'user_id');
-    }
 
     public function orders() {
         return $this->hasMany(order::class);

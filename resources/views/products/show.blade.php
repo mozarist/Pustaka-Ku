@@ -6,13 +6,6 @@
             <img src="{{ Asset('storage/' . $product->gambar) }}" alt=""
                 class="bg-gradient-to-tr from-zinc-50 to-white w-full aspect-square object-cover border border-zinc-300 rounded-md">
 
-            <div class="space-y-2">
-                <p class="text-rose-600 text-4xl font-semibold">Rp{{ number_format($product->harga, 0, ',', '.') }},00
-                </p>
-
-                <p class="text-xl font-semibold">Tersedia: {{ $product->stok }} stok</p>
-            </div>
-
             <hr class="border-t border-zinc-300">
 
             @if (Auth::check() === false)
@@ -38,14 +31,10 @@
                         </div>
                     @else
                         <div class="flex gap-2 items-center w-full">
-                            <x-primary-button class="w-full">
-                                Masukkan ke keranjang
-                            </x-primary-button>
-
                             <a href="{{ route('order.create', $product->id) }}" class="w-full">
-                                <x-secondary-button class="w-full">
-                                    Checkout Sekarang
-                                </x-secondary-button>
+                                <x-primary-button class="w-full">
+                                    Pinjam buku ini
+                                </x-primary-button>
                             </a>
                         </div>
                     @endif
@@ -56,12 +45,23 @@
         <div class="flex-1 flex flex-col gap-5 justify-evenly">
 
             <!-- Detail produk -->
-            <div class="space-y-2">
-                <h1 class="text-4xl font-semibold">{{ $product->nama }}</h1>
-                <p class="text-rose-600 text-sm pb-5 border-b border-zinc-400">{{ $product->seller->name }}</p>
+            <div class="space-y-5">
+                <h2 class="text-4xl font-semibold">{{ $product->nama }}</h2>
+
+                <div class="space-y-2">
+                    <p class="text-xl font-semibold leading-none">Tersedia: <span class="text-emerald-600">{{ $product->jumlah }}</span></p>
+                    
+                    <p class="text-xl font-semibold leading-none">Kategori: <span class="text-emerald-600">{{ $product->kategori }}</span></p>
+                </div>
+
+                <hr class="border-t border-zinc-300">
+                
                 <div class="space-y-0">
-                    <h4 class="text-xl font-semibold">Deskripsi Produk:</h4>
+
+                    <h4 class="text-lg font-semibold">Deskripsi/Sinopsis Buku</h4>
+
                     <p class="text-sm text-zinc-700 leading-tight">{!! nl2br(e($product->deskripsi)) !!}</p>
+                    
                 </div>
             </div>
 
