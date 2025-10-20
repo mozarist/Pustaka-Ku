@@ -23,7 +23,7 @@
 </head>
 
 <body class="font-[Geist] antialiased">
-    <div class="flex flex-col items-center justify-between min-h-screen bg-zinc-50 text-zinc-950">
+    <div class="flex flex-col items-center justify-between min-h-screen bg-zinc-100 text-zinc-950">
         @include('layouts.navigation')
 
         @if (request()->is('/'))

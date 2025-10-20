@@ -7,7 +7,7 @@
                 Meminjam buku lebih mudah dengan
                 <span
                     class="bg-gradient-to-tr from-green-600 to-emerald-600 bg-clip-text inline-block w-fit text-transparent font-semibold">
-                    Pustaka-Ku!
+                    Pustaka-Ku
                 </span>
             </h2>
 

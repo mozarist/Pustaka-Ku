@@ -45,7 +45,6 @@ class ProductController extends Controller
         }
         ;
 
-        $validatedData['user_id'] = Auth::id();
         Products::create($validatedData);
 
         return redirect()->route('admin.index');
@@ -65,7 +64,7 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         $product = Products::findOrFail($id);
-        if ($product->user_id !== Auth::id()) {
+        if (auth()->check() &&! auth()->user()->role === 'admin') {
             return view('forbidden');
         }
         return view('admin.products.edit', compact('product'));

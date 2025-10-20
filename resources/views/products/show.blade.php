@@ -10,12 +10,12 @@
 
             @if (Auth::check() === false)
                 <x-primary-button class="w-full">
-                    <a href="/login">Login untuk belanja</a>
+                    <a href="/login">Login untuk pinjam</a>
                 </x-primary-button>
             @else
                 <!-- Kalau pemilik produk yang view produknya -->
                 @auth
-                    @if ($product->user_id === auth()->id())
+                    @if (auth()->user()->role === 'admin')
                         <div class="flex gap-2 items-center w-full">
                             <a href="{{ route('products.edit', $product->id) }}" class="w-full">
                                 <x-primary-button class="w-full">

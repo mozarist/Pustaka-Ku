@@ -1,6 +1,6 @@
 <div
-    class="flex flex-col justify-center items-center gap-10 bg-gradient-to-br from-green-100/75 via-white to-emerald-100/75
-           bg-center bg-cover w-full min-h-[80vh] md:min-h-[60vh] p-5 border border-zinc-300 rounded-3xl">
+    class="flex flex-col justify-center items-center gap-10 bg-gradient-to-br from-green-100 via-white to-emerald-100
+           bg-center bg-cover w-full min-h-[80vh] md:min-h-[70vh] 2xl:min-h-[60vh] p-5 border border-zinc-300 rounded-3xl">
     <h1 class="text-center text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold w-full max-w-6xl">
         Mau cari buku-mu? Cari aja di <span
             class="bg-gradient-to-tr from-green-600 to-emerald-600 bg-clip-text inline-block w-fit text-transparent font-semibold">
