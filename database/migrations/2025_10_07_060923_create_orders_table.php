@@ -13,15 +13,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('products_id')->constrained()->cascadeOnDelete();
-            $table->string('nama_pemesan');
-            $table->string('alamat');
+            $table->string('nama_peminjam');
             $table->integer('jumlah');
-            $table->enum('kurir', ['JNE', 'JNT', 'POS', 'SiCepat']);
-            $table->enum('metode_pembayaran', ['COD', 'bank', 'e-wallet']);
-            $table->enum('status', ['pending', 'diproses', 'diantar', 'selesai', 'dibatalkan'])->default('pending');
-            $table->unsignedBigInteger('total_harga')->default(0);
+            $table->date('tanggal_pinjam');
+            $table->date('tanggal_kembali');
+            $table->enum('status', ['diproses', 'dipinjam', 'dikembalikan', 'rusak'])->default('diproses');
             $table->timestamps();
         });
     }

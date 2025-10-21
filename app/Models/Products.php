@@ -8,6 +8,7 @@ class Products extends Model
 {
     protected $fillable = [
         'nama',
+        'author',
         'kategori',
         'gambar',
         'jumlah',

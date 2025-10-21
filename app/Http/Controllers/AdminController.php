@@ -15,9 +15,7 @@ class AdminController extends Controller
     public function index()
     {
         $product = Products::all();
-        $order = Order::with('products')->whereHas('products', function ($query) {
-            $query->where('user_id', Auth::id());
-        })->latest()->get();
+        $order = Order::with('products')->latest()->get();
         return view('admin.index', compact('product', 'order'));
     }
 }

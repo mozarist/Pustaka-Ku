@@ -14,13 +14,13 @@
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 w-full">
 
             <!-- card -->
-            <x-analytics-card title="Total Produk" data="{{ $product->count() }}" />
+            <x-analytics-card title="Jumlah buku" data="{{ $product->count() }}" />
 
-            <x-analytics-card title="Total Penjualan" data="{{ $order->count() }}" />
+            <x-analytics-card title="Total peminjaman" data="{{ $order->count() }}" />
 
-            <x-analytics-card title="Total Pendapatan" data="0" />
+            <x-analytics-card title="Total peminjam" data="0" />
 
-            <x-analytics-card title="Pesanan Pending" data="{{ $order->count('pending') }}" />
+            <x-analytics-card title="Pinjaman pending" data="{{ $order->count('pending') }}" />
 
         </div>
     </div>

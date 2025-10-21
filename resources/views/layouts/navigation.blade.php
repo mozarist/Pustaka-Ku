@@ -21,7 +21,7 @@
 
                     @if (Route::is('admin.index', 'products.create', 'products.edit'))
                         @if (Auth::check() && Auth::user()->role === 'admin')
-                            <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                            <x-nav-link :href="route('home.index')" :active="request()->routeIs('home')">
                                 {{ __('Back to home') }}
                             </x-nav-link>
 
@@ -34,18 +34,18 @@
                             </x-nav-link>
 
                             <x-nav-link href="/admin#orders">
-                                {{ __('Pesanan') }}
+                                {{ __('Pinjaman') }}
                             </x-nav-link>
                         @endif
                     @else
-                        <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                        <x-nav-link :href="route('home.index')" :active="request()->routeIs('home.index')">
                             {{ __('Home') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('products.index')" :active="request()->routeIs('order.index')">
+                        <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
                             {{ __('Daftar buku') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('order.index')" :active="request()->routeIs('admin.index')">
+                        <x-nav-link :href="route('order.index')" :active="request()->routeIs('order.index')">
                             {{ __('Pinjaman-mu') }}
                         </x-nav-link>
                     @endif

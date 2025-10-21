@@ -4,8 +4,10 @@
 
         <div class="space-y-2 text-center">
             <h2 class="text-2xl md:text-7xl uppercase font-semibold">Daftar Buku</h2>
-            <p class="text-zinc-500 font-semibold">Lihat seluruh buku di perpustakaan kami</p>
+            <p class="text-zinc-500 font-semibold">Jelajahi seluruh buku di perpustakaan kami</p>
         </div>
+
+        <x-search-bar>Mau cari buku apa?</x-search-bar>
 
         @if ($product->isEmpty())
             <p

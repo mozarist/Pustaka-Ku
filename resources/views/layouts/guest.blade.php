@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <div class="flex flex-col sm:justify-center items-center w-full pt-6 sm:pt-0 ">
+    <div class="flex flex-col sm:justify-center items-center w-full px-5 pt-6 sm:pt-0 ">
         <div>
             <a href="/">
                 <x-application-logo class="text-6xl 2xl:text-8xl h-16 2xl:h-32" />

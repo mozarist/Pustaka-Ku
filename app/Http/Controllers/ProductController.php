@@ -33,6 +33,7 @@ class ProductController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => 'required|string',
+            'author' => 'required|string',
             'kategori' => 'required|string',
             'gambar' => 'nullable|image|mimes:jpg,jpeg,png,jfif,webp|max:5120',
             'jumlah' => 'required|integer',
@@ -64,7 +65,7 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         $product = Products::findOrFail($id);
-        if (auth()->check() &&! auth()->user()->role === 'admin') {
+        if (Auth::check() &&! Auth::user()->role === 'admin') {
             return view('forbidden');
         }
         return view('admin.products.edit', compact('product'));
@@ -75,12 +76,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, Products $product)
     {
-        if ($product->user_id !== Auth::id()) {
+        if (Auth::check() &&! Auth::user()->role === 'admin') {
             return view('forbidden');
         }
 
         $validatedData = $request->validate([
             'nama' => 'required|string',
+            'author' => 'required|string',
             'kategori' => 'required|string',
             'gambar' => 'nullable|image|mimes:jpg,jpeg,png,jfif,webp|max:5120',
             'jumlah' => 'required|integer',
@@ -109,7 +111,7 @@ class ProductController extends Controller
      */
     public function destroy(Products $product)
     {
-        if ($product->user_id !== Auth::id()) {
+        if (Auth::check() &&! Auth::user()->role === 'admin') {
             return view('forbidden');
         }
 

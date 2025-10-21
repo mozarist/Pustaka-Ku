@@ -15,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = Order::with('products')->where('user_id', Auth::id())->latest()->get();
+        $order = Order::with('products')->latest()->get();
 
         return view('order.index', compact('order'));
     }
@@ -40,33 +40,27 @@ class OrderController extends Controller
     {
         $data = $request->validate([
             'product_id' => 'required|exists:products,id',
-            'nama_pemesan' => 'required|string',
-            'alamat' => 'required|string',
+            'nama_peminjam' => 'required|string',
             'jumlah' => 'required|integer',
-            'kurir' => 'required|in:JNE,JNT,POS,SiCepat',
-            'metode_pembayaran' => 'required|in:COD,bank,e-wallet',
+            'tanggal_pinjam' => 'required|date',
+            'tanggal_kembali' => 'required|date|after_or_equal:tanggal_pinjam',
         ]);
 
-        $product = Products::where('status', 'aktif')->findOrFail($data['product_id']);
-
-        $harga = (int)$product->harga;
+        $product = Products::findOrFail($data['product_id']);
+        
         $jumlah = (int)$data['jumlah'];
-        $total_harga = $harga * $jumlah;
 
-        DB::transaction(function () use ($request, $product, $harga, $jumlah, $total_harga) {
+        DB::transaction(function () use ($data, $product, $jumlah) {
             order::create([
-                'user_id' => Auth::id(),
                 'products_id' => $product->id,
-                'nama_pemesan' => $request->nama_pemesan,
-                'alamat' => $request->alamat,
-                'jumlah' => $request->jumlah,
-                'kurir' => $request->kurir,
-                'metode_pembayaran' => $request->metode_pembayaran,
-                'total_harga' => $total_harga,
+                'nama_peminjam' => $data['nama_peminjam'],
+                'jumlah' => $data['jumlah'],
+                'tanggal_pinjam' => $data['tanggal_pinjam'],
+                'tanggal_kembali' => $data['tanggal_kembali'],
             ]);
 
             $product->update([
-                'stok' => $product->stok - $jumlah
+                'jumlah' => $product->jumlah - $jumlah
             ]);
         });
 
