@@ -11,7 +11,7 @@
         <div class="flex flex-col divide-y divide-zinc-500 bg-white rounded-2xl border border-zinc-500">
             @foreach ($order as $o)
                 <div>
-                    <div class="flex flex-col md:flex-row gap-5 bg-white p-5 w-full h-full rounded-2xl">
+                    <div class="flex flex-col md:flex-row gap-8 bg-white p-5 w-full h-full rounded-2xl">
                         <div class="w-full md:w-1/3 h-fit">
                             <img src="{{ asset('storage/' . $o->products->gambar) }}" alt=""
                                 class="w-full aspect-square object-cover border border-zinc-500 rounded-xl">
@@ -19,9 +19,9 @@
 
                         <div class="flex flex-col gap-5 justify-between w-full">
                             <div class="space-y-5">
-                                <div class="space-y-5 border-b border-zinc-300 pb-5">
+                                <div class="space-y-2 border-b border-zinc-300 pb-5">
                                     <div>
-                                        <h6 class="text-sm md:text-xl font-semibold line-clamp-2">
+                                        <h6 class="text-sm md:text-xl font-semibold truncate">
                                             {{ $o->products->nama }}
                                         </h6>
 
@@ -32,25 +32,22 @@
                                     </div>
 
                                     <p class="text-sm leading-tight line-clamp-2">
-                                        {{ $o->products->deskripsi }}
+                                        {{ $o->products->deskripsi }} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe eveniet fugiat accusamus odit at voluptate repudiandae eius ea. Vel officia libero quasi soluta neque? Maiores magni totam quis accusamus obcaecati voluptatum, dolores rerum distinctio quibusdam et unde doloribus laudantium nihil amet soluta corporis cum illum voluptatibus consectetur vero porro. Numquam.
                                     </p>
                                 </div>
 
                                 <div class="space-y-2">
 
-                                    <p class="text-sm font-semibold leading-none">
+                                    <p class="text-base font-semibold leading-none">
                                         Peminjam buku: <span class="text-emerald-600">{{ $o->nama_peminjam }}</span>
                                     </p>
 
-                                    <p class="text-xs text-zinc-600 font-semibold leading-none">
-                                        {{ $o->alamat }}
-                                    </p>
-
-                                    <p class="text-sm font-semibold leading-none">
+                                    <p class="text-base font-semibold leading-none">
                                         Jumlah: <span class="text-zinc-600">{{ $o->jumlah }} </span>
                                     </p>
 
                                 </div>
+                                
                                 <div class="space-y-2">
                                     <p class="text-sm font-medium leading-none">
                                         Tanggal peminjaman: <span class="text-zinc-700">{{ $o->tanggal_pinjam }}</span>

@@ -2,7 +2,7 @@
 
     <div class="flex flex-col md:flex-row items-start gap-24 w-full">
 
-        <div class="flex-1 space-y-5">
+        <div class="w-full md:w-2/5 space-y-5">
             <img src="{{ Asset('storage/' . $product->gambar) }}" alt=""
                 class="bg-gradient-to-tr from-zinc-50 to-white w-full aspect-square object-cover border border-zinc-300 rounded-md">
 
@@ -48,7 +48,7 @@
             @endif
         </div>
 
-        <div class="flex-1 flex flex-col gap-5 justify-evenly">
+        <div class="w-full md:w-3/5 flex flex-col gap-5 justify-evenly">
 
             <!-- Detail produk -->
             <div class="space-y-5">

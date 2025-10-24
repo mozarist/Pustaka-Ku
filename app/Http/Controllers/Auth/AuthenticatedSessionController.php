@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
             return redirect('admin');
         }
         else {
-            return redirect('/');
+            return redirect()->route('products.index');
         };
     }
 

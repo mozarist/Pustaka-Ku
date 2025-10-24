@@ -16,6 +16,9 @@ class AdminController extends Controller
     {
         $product = Products::all();
         $order = Order::with('products')->latest()->get();
-        return view('admin.index', compact('product', 'order'));
+        $totalPeminjam = Order::distinct('user_id')->count('user_id');
+        $pendingOrders = Order::where('status', 'diproses')->count();
+
+        return view('admin.index', compact('product', 'order', 'totalPeminjam', 'pendingOrders'));
     }
 }

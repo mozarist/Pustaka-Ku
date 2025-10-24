@@ -18,9 +18,9 @@
 
             <x-analytics-card title="Total peminjaman" data="{{ $order->count() }}" />
 
-            <x-analytics-card title="Total peminjam" data="0" />
+            <x-analytics-card title="Total peminjam" data="{{ $totalPeminjam }}" />
 
-            <x-analytics-card title="Pinjaman pending" data="{{ $order->count('pending') }}" />
+            <x-analytics-card title="Pinjaman pending" data="{{ $pendingOrders }}" />
 
         </div>
     </div>
@@ -89,8 +89,7 @@
 
                                             <p class="text-base font-semibold leading-none">
                                                 Kategori:
-                                                <span
-                                                    class="text-zinc-700">
+                                                <span class="text-zinc-700">
                                                     {{ $p->kategori }}
                                                 </span>
                                             </p>
@@ -136,8 +135,7 @@
             <div class="flex flex-col divide-y divide-zinc-500 bg-white rounded-2xl border border-zinc-500">
                 @foreach ($order as $o)
                     <div>
-                        <div
-                            class="flex flex-col md:flex-row md:items-center gap-5 bg-white p-5 w-full h-full rounded-2xl">
+                        <div class="flex flex-col md:flex-row md:items-center gap-5 bg-white p-5 w-full h-full rounded-2xl">
                             <div class="w-full md:w-1/3 h-fit">
                                 <img src="{{ asset('storage/' . $o->products->gambar) }}" alt=""
                                     class="w-full aspect-square object-cover border border-zinc-500 rounded-xl">
@@ -156,51 +154,40 @@
                                     </p>
                                 </div>
 
-                                <div class="space-y-2">
+                                <div class="space-y-4">
 
-                                    <p class="text-sm font-semibold leading-none">
-                                        Pemesan: {{ $o->nama_pemesan }}
-                                    </p>
-
-                                    <div class="space-y-1">
+                                    <div class="space-y-2">
                                         <p class="text-sm font-semibold leading-none">
-                                            Alamat Pengiriman:
-                                            <span class="text-zinc-600 font-semibold">
-                                                {{ $o->alamat }}
-                                            </span>
-                                        </p>
-                                    </div>
-
-                                    <div class="flex items-center gap-5">
-                                        <p class="text-sm font-semibold leading-none">
-                                            Jumlah: {{ $o->jumlah }}
+                                            Peminjam: {{ $o->nama_peminjam }}
                                         </p>
 
-                                        <p class="text-sm font-semibold leading-none">
-                                            Pengiriman: {{ $o->kurir }}
-                                        </p>
-                                    </div>
-
-                                    <h6 class="text-lg text-rose-600 font-semibold leading-tight">
-                                        Total: Rp {{ number_format($o->total_harga, 0, ',', '.') }},00
-                                    </h6>
-
-                                    <div class="flex items-center gap-2">
-                                        <div
-                                            class="px-4 py-2 text-sm font-semibold capitalize border border-zinc-500 rounded-md">
-                                            Status: {{ $o->status }}
+                                        <div class="flex items-center gap-5">
+                                            <p class="text-sm font-semibold leading-none">
+                                                Jumlah: {{ $o->jumlah }}
+                                            </p>
                                         </div>
-
-                                        <div
-                                            class="px-4 py-2 text-sm font-semibold capitalize border border-zinc-500 rounded-md">
-                                            Pembayaran: {{ $o->metode_pembayaran }}
-                                        </div>
-
-                                        <a href="{{ route('order.show', $o->id) }}">
-                                            <x-primary-button>Kelola Pesanan Ini</x-primary-button>
-                                        </a>
                                     </div>
 
+                                    <div class="space-y-2">
+                                        <p class="text-sm font-medium leading-none">
+                                            Tanggal peminjaman: <span class="text-zinc-700">{{ $o->tanggal_pinjam }}</span>
+                                        </p>
+
+                                        <p class="text-sm font-medium leading-none">
+                                            Tanggal pengembalian: <span class="text-zinc-700">{{ $o->tanggal_kembali }}</span>
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                <div class="flex items-center gap-2">
+                                    <div class="px-4 py-2 text-sm font-semibold capitalize border border-zinc-500 rounded-md">
+                                        Status: <span class="text-emerald-600">{{ $o->status }}</span>
+                                    </div>
+
+                                    <a href="{{ route('order.show', $o->id) }}">
+                                        <x-primary-button>Kelola Pesanan Ini</x-primary-button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

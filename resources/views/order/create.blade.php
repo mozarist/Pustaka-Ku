@@ -1,8 +1,8 @@
 <x-app-layout>
 
-    <div class="flex flex-col md:flex-row items-start justify-start bg-white w-full border border-zinc-500 rounded-2xl">
+    <div class="flex flex-col md:flex-row items-start justify-start bg-white w-full border border-zinc-500 divide-x divide-zinc-400 rounded-2xl">
 
-        <div class="w-full h-full md:w-1/2 flex flex-col gap-5 p-5 md:border-r border-zinc-400">
+        <div class="w-full h-full md:w-1/3 flex flex-col gap-5 p-5">
             <img src="{{ asset('storage/' . $product->gambar) }}" alt=""
                 class="w-full h-full aspect-square object-cover border border-zinc-500 rounded-xl">
 
@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <div class="w-full md:w-1/2">
+        <div class="w-full md:w-2/3">
             <form action="{{ route('order.store', $product->id) }}" method="POST" enctype="multipart/form-data"
                 class="space-y-4 w-full self-center p-5">
                 @csrf
@@ -40,7 +40,7 @@
                 <label class="block">
                     <span class="text-sm">Nomor data buku</span>
                     <input type="text" name="product_id" required value="{{ $product->id }}" readonly
-                        class="mt-1 block w-full rounded-lg bg-transparent border border-zinc-700 px-3 py-2" />
+                        class="mt-1 block w-full rounded-lg bg-transparent text-emerald-600 border border-zinc-700 px-3 py-2" />
                 </label>
 
                 <label class="block">

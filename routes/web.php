@@ -20,6 +20,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/pinjaman/{id}', [OrderController::class, 'update'])->name('order.update');
     Route::get('/pinjam/{product}', [OrderController::class, 'create'])->name('order.create');
     Route::post('/pinjam', [OrderController::class, 'store'])->name('order.store');
+    Route::delete('/pinjam/{order}', [OrderController::class, 'destroy'])->name('order.destroy');
 });
 
 Route::middleware('auth')->group(function () {

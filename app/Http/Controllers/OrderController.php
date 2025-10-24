@@ -15,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = Order::with('products')->latest()->get();
+        $order = Order::with('products')->where('user_id', Auth::id())->latest()->get();
 
         return view('order.index', compact('order'));
     }
@@ -47,11 +47,12 @@ class OrderController extends Controller
         ]);
 
         $product = Products::findOrFail($data['product_id']);
-        
-        $jumlah = (int)$data['jumlah'];
+
+        $jumlah = (int) $data['jumlah'];
 
         DB::transaction(function () use ($data, $product, $jumlah) {
             order::create([
+                'user_id' => Auth::id(),
                 'products_id' => $product->id,
                 'nama_peminjam' => $data['nama_peminjam'],
                 'jumlah' => $data['jumlah'],
@@ -76,7 +77,7 @@ class OrderController extends Controller
 
         if (
             $order->user_id !== Auth::id() &&
-            $order->products->user_id !== Auth::id()
+            Auth::user()->role !== 'admin'
         ) {
             abort(403);
         }
@@ -100,14 +101,14 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
 
         $request->validate([
-            'status' => 'required|string|in:pending,diproses,diantar,selesai,dibatalkan',
+            'status' => 'required|string|in:diproses,dipinjam,dikembalikan,rusak',
         ]);
 
         $order->update([
             'status' => $request->status,
         ]);
 
-        return redirect()->route('seller.index');
+        return redirect()->route('admin.index');
     }
 
 
@@ -116,6 +117,13 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        if ($order->user_id !== Auth::id()) {
+            return view('forbidden');
+        }
+
+
+        $order->delete();
+
+        return redirect()->route('order.index');
     }
 }

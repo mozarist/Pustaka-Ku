@@ -51,6 +51,6 @@ class RegisteredUserController extends Controller
             return redirect('admin');
         }
 
-        return redirect(route('home.index', absolute: false));
+        return redirect(route('products.index', absolute: false));
     }
 }
